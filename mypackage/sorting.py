@@ -5,17 +5,22 @@ def sum_array(array, count = 0, temp = 0):
         return sum_array(array, count + 1, temp)
     return temp
 
-def fibonacci(n):
-    if n <= 3:
-        if n == 1:
-            return 0
-        elif n == 2:
-            return 1
-        else:
-            return 1
-    else:
+def factorial(n, count = 1, temp = 1, orig = 0):
 
-        return fibonacci(n - 1) + fibonacci(n - 2)
+    '''Return n!'''
+    if n == 0:
+        return 1
+    if count == 1:
+        orig = n
+    if n <= 1:
+        return n    
+    else:
+        count += 1
+        temp = n * temp
+        if count == orig:
+            return temp
+        else:
+            return factorial(n - 1, count, temp, orig)
 
 def factorial(n, count = 1, temp = 1, orig = 0):
 
