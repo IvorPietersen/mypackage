@@ -12,7 +12,7 @@ def bubble_sort(items):
     return items
 
 def merge_sort(items, count = 0):
-
+    
     '''Return array of items, sorted in ascending order'''
     count = 0
     records = []
@@ -31,14 +31,14 @@ def merge_sort(items, count = 0):
             right.append(sub_items[i])
             i +=1
         return left, right, count
-
+    
     def assign(segment):
         nonlocal records
         left, right, counter = split(segment)
         entry = (counter, left, len(left), right, len(right))
         records.append(entry)
         return records
-
+ 
     def grow(records):
         i = 0
         while i < len(records):
@@ -55,24 +55,28 @@ def merge_sort(items, count = 0):
                     check = 0
                 else:
                     break
-            i+=1
-        return records
+            i+=1 
+        return records    
 
     def order(list11, list12):
         list3 = []
         if len(list11) > len(list12):
-            list1, list2 = list12, list11
+            list1, list2 = list11, list12
         else:
-            list1, list2, = list11, list12
+            list1, list2, = list12, list11
         i = 0
         j = 0
-        while i < len(list1) and j < len(list2):
-            if list1[i] < list2[j]:
+        while i < len(list1):
+            if j < len(list2):
+                if list1[i] < list2[j]:
+                    list3.append(list1[i])
+                    i += 1
+                else:
+                    list3.append(list2[j])
+                    j += 1
+            else:
                 list3.append(list1[i])
                 i += 1
-            else:
-                list3.append(list2[j])
-                j += 1
         if i < j:
             k = i
             tempor = list1
@@ -82,11 +86,11 @@ def merge_sort(items, count = 0):
         while k < len(tempor):
             list3.append(tempor[k])
             k +=1
-        return list3
+        return list3      
 
     def put_together(record):
         count = 1
-        r = 1
+        r = 0
         li = []
         li1 = []
         li2 = []
@@ -105,14 +109,13 @@ def merge_sort(items, count = 0):
 
             else:
                 r +=1
-
-        return li
+        return li  
 
     def groupy(listing):
         if len(listing) % 2 == 0:
             f = 0
             lis5 = []
-            while f+1 <= len(listing):
+            while f+1 <= len(listing) -1:
                 inpu = (order(listing[f], listing[f+1]))
                 lis5.append(inpu)
                 f +=2
@@ -123,23 +126,22 @@ def merge_sort(items, count = 0):
                 iup = (order(listing[f], listing[f+1]))
                 lis5.append(iup)
                 f +=2
-            f -= 1
+            #f -= 1  ##
             pup = (listing[f])
             lis5.append(pup)
         temp = []
         for item in lis5:
             temp.append(item)
         return temp
-
+    
     def sorteds(lists):
         while len(lists) > 1:
             lists = groupy(lists)
         return lists
-
-
+            
+        
     assigned = assign(items)
     grown = grow(assigned)
-
     singles = put_together(grown)
     grouped = groupy(singles)
     finale = sorteds(grouped)
