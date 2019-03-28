@@ -12,7 +12,7 @@ def bubble_sort(items):
     return items
 
 def merge_sort(items, count = 0):
-    
+
     '''Return array of items, sorted in ascending order'''
     count = 0
     records = []
@@ -31,14 +31,14 @@ def merge_sort(items, count = 0):
             right.append(sub_items[i])
             i +=1
         return left, right, count
-    
+
     def assign(segment):
         nonlocal records
         left, right, counter = split(segment)
         entry = (counter, left, len(left), right, len(right))
         records.append(entry)
         return records
- 
+
     def grow(records):
         i = 0
         while i < len(records):
@@ -55,8 +55,8 @@ def merge_sort(items, count = 0):
                     check = 0
                 else:
                     break
-            i+=1 
-        return records    
+            i+=1
+        return records
 
     def order(list11, list12):
         list3 = []
@@ -86,7 +86,7 @@ def merge_sort(items, count = 0):
         while k < len(tempor):
             list3.append(tempor[k])
             k +=1
-        return list3      
+        return list3
 
     def put_together(record):
         count = 1
@@ -109,7 +109,7 @@ def merge_sort(items, count = 0):
 
             else:
                 r +=1
-        return li  
+        return li
 
     def groupy(listing):
         if len(listing) % 2 == 0:
@@ -133,13 +133,13 @@ def merge_sort(items, count = 0):
         for item in lis5:
             temp.append(item)
         return temp
-    
+
     def sorteds(lists):
         while len(lists) > 1:
             lists = groupy(lists)
         return lists
-            
-        
+
+
     assigned = assign(items)
     grown = grow(assigned)
     singles = put_together(grown)
